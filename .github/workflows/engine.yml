@@ -9,10 +9,6 @@ on:
         description: Discord user ID used only to release the Worker build lock
         required: true
         type: string
-      worker_url:
-        description: Trusted Worker origin for the completion callback
-        required: true
-        type: string
 
 permissions:
   contents: read
@@ -51,15 +47,5 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-      - name: Notify Worker
-        if: always()
-        env:
-          BUILD_CALLBACK_SECRET: ${{ secrets.BUILD_CALLBACK_SECRET }}
-        run: |
-          status="${{ job.status }}"
-          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          curl --fail --silent --show-error --request POST \
-            --header 'Content-Type: application/json' \
-            --header "Authorization: Bearer $BUILD_CALLBACK_SECRET" \
-            --data "{\"user_id\":\"${{ inputs.user_id }}\",\"status\":\"$status\",\"run_url\":\"$run_url\"}" \
-            "${{ inputs.worker_url }}/build-callback"
+# Configure an authenticated callback only after deploying the Worker to a fixed HTTPS URL.
+# Until then, builds are tracked through GitHub Actions and Worker locks expire automatically.

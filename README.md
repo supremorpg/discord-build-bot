@@ -50,7 +50,7 @@ npm run dev
    - `DISCORD_BOT_TOKEN`
    - `GITHUB_TOKEN`
    - `BUILD_CALLBACK_SECRET`
-4. Configure o mesmo `BUILD_CALLBACK_SECRET` como secret nos dois repositórios Android.
+4. Depois que o Worker tiver uma URL HTTPS fixa, configure o mesmo `BUILD_CALLBACK_SECRET` como secret nos dois repositórios Android e adicione o callback autenticado descrito no workflow. Até esse deploy, acompanhe os builds pelo GitHub Actions; o lock do Worker expira em uma hora.
 
 `GITHUB_TOKEN` deve ser um fine-grained PAT ou token de GitHub App com apenas a capacidade necessária para `workflow_dispatch` nos dois targets. Não reutilize o token do Discord no callback.
 

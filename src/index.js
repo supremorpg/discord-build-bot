@@ -245,7 +245,6 @@ async function startBuild(interaction, request, env, ctx, targetName) {
     targetLabel: target.label
   }), { expirationTtl: 3600 });
 
-  const workerUrl = new URL(request.url).origin;
   const dispatchUrl = `https://api.github.com/repos/${env.GITHUB_OWNER}/${target.repository}/actions/workflows/${env.BUILD_WORKFLOW}/dispatches`;
   ctx.waitUntil(fetch(dispatchUrl, {
     method: 'POST',
@@ -257,8 +256,7 @@ async function startBuild(interaction, request, env, ctx, targetName) {
     body: JSON.stringify({
       ref: env.BUILD_REF,
       inputs: {
-        user_id: userId,
-        worker_url: workerUrl
+        user_id: userId
       }
     })
   }).then(async (response) => {
