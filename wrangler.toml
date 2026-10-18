@@ -1,0 +1,21 @@
+name = "supremorpg-discord-build-bot"
+main = "src/index.js"
+compatibility_date = "2025-07-18"
+
+[vars]
+GITHUB_OWNER = "supremorpg"
+MEDUSA_REPO = "medusa-android"
+AURORA_REPO = "aurora-launcher"
+BUILD_WORKFLOW = "android-build.yml"
+BUILD_REF = "main"
+# Configure these values in the Cloudflare dashboard or environment-specific Wrangler config.
+# DISCORD_GUILD_ID = "..."
+# DISCORD_TICKET_CATEGORY_ID = "..."
+
+[[kv_namespaces]]
+binding = "TICKETS"
+# Replace with a namespace created for this deployment environment.
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[triggers]
+crons = ["0 * * * *"]

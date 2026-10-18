@@ -1,0 +1,30 @@
+{
+  "name": "discord-build-bot",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for controlled Supremorpg Android build requests",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test",
+    "validate": "node --check src/index.js && npm run test",
+    "deploy": "wrangler deploy"
+  },
+  "engines": {
+    "node": ">=20 <27"
+  },
+  "dependencies": {
+    "discord-interactions": "^4.1.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.114.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supremorpg/discord-build-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/supremorpg/discord-build-bot/issues"
+  },
+  "homepage": "https://github.com/supremorpg/discord-build-bot#readme",
+  "license": "UNLICENSED"
+}

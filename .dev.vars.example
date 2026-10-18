@@ -1,0 +1,9 @@
+# Cloudflare Worker secrets. Do not commit a real .dev.vars file.
+DISCORD_PUBLIC_KEY=
+DISCORD_BOT_TOKEN=
+GITHUB_TOKEN=
+BUILD_CALLBACK_SECRET=
+
+# Environment-specific, non-secret Discord routing values.
+DISCORD_GUILD_ID=
+DISCORD_TICKET_CATEGORY_ID=
